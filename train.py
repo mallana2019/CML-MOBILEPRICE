@@ -33,7 +33,7 @@ X_train = scalar.transform(X_train)
 X_test =  scalar.transform(X_test)
 
 #Building Model 
-clf = XGBClassifier()
+clf = RandomForestClassifier()
 clf.fit(X_train,y_train)
 
 
