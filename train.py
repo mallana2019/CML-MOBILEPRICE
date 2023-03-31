@@ -44,7 +44,8 @@ print(acc)
 with open("metrics.json", 'w') as outfile:
         json.dump({ "accuracy": acc}, outfile)
 #plot a confusion matrix
-disp = ConfusionMatrixDisplay.from_estimator(
-    clf, X_test, y_test, normalize="true", cmap=plt.cm.Blues
-)
+predictions = clf.predict(X_test)
+cm = confusion_matrix(y_test, predictions, labels=clf.classes_)
+disp = ConfusionMatrixDisplay(confusion_matrix=cm,
+                          display_labels=clf.classes_)
 plt.savefig("confusion_matrix.png")
