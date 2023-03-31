@@ -46,7 +46,7 @@ macro_averaged_f1score = f1_score(y_test,clf.predict(X_test), average = 'macro')
 with open("metrics.json", 'w') as outfile:
         json.dump({ "accuracy": acc , "f1_score_macro" :macro_averaged_f1score}, outfile)
 #plot a confusion matrix
-disp = ConfusionMatrixDisplay.from_estimator(
-    clf, X_test, y_test, normalize="true", cmap=plt.cm.Blues
-)
-plt.savefig("confusion_matrix.png")
+predictions = clf.predict(X_test)
+cm = confusion_matrix(y_test, predictions , normalize='true') 
+sns.heatmap(cm, annot=True, cmap=plt.cm.Blues)
+plt.savefig('confusion_matrix.png')
