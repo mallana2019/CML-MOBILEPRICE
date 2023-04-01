@@ -1,3 +1,9 @@
+plots:
+   - Confusion matrix:
+        template: confusion
+        x: actual
+        y:
+          training/plots/sklearn/confusion_matrix.json: predicted
 stages:
   prepare_data:
     cmd: python prepare_data.py
@@ -14,7 +20,4 @@ stages:
     
     metrics:
     -  metrics.json:
-          cache: false
-    plots:
-    -  confusion_matrix.png:
           cache: false
