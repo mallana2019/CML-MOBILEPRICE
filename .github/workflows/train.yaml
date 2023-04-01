@@ -32,7 +32,7 @@ jobs:
           echo "## Plots" >> report.md
           #echo "### Class confusions" >> report.md
           git fetch --prune
-          dvc plots diff --target classes.csv main --show-vega > confusion_matrix.png
+          dvc plots diff --target confusion_matrix.png main --show-vega > confusion_matrix.png
           echo "![](./confusion_matrix.png)" >> report.md 
 
        
