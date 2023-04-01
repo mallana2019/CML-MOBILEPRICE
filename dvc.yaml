@@ -11,9 +11,10 @@ stages:
     deps:
     - train.py
     - mobile_data.csv
-    outs:
-    - confusion_matrix.png
+    
     metrics:
     -  metrics.json:
           cache: false
-
+    plots:
+    -  confusion_matrix.png:
+          cache: false
