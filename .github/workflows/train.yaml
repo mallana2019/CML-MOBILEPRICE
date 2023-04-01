@@ -28,11 +28,12 @@ jobs:
           git fetch --prune
           dvc metrics diff main --show-md >> report.md
           
-          Publish confusion matrix diff
+          
           #echo "## Plots" >> report.md
           #echo "### Class confusions" >> report.md
-          dvc plots diff main --show-md  >  -s 1.5 > confusion_matrix.png
-          echo "![](./confusion_matrix.png)" >> report.md
+          git fetch --prune
+          dvc plots diff main --show-md  >> report.md
+          echo "![](./confusion_matrix.png)"
 
        
           cml comment create report.md
