@@ -29,11 +29,11 @@ jobs:
           dvc metrics diff main --show-md >> report.md
           
           
-          #echo "## Plots" >> report.md
+          echo "## Plots" >> report.md
           #echo "### Class confusions" >> report.md
           git fetch --prune
-          dvc plots diff main --show-md  >> report.md
-          echo "![](./confusion_matrix.png)"
+          dvc plots diff main >  confusion_matrix.png
+          echo "![](./confusion_matrix.png)" >> report.md 
 
        
           cml comment create report.md
