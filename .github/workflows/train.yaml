@@ -1,34 +1,41 @@
-name: mobile-price-classification
+name: CML & DVC
 on: [push]
 jobs:
-  run:
+  train-and-report:
     runs-on: ubuntu-latest
-    container: ghcr.io/iterative/cml:0-dvc2-base1
-  
+    # container: docker://ghcr.io/iterative/cml:0-dvc2-base1
     steps:
       - uses: actions/checkout@v3
-      - uses: actions/setup-python@v4       
+      - uses: actions/setup-node@v3
+        with:
+          node-version: '16'
+      - uses: actions/setup-python@v4
+        with:
+          python-version: '3.x'
       - uses: iterative/setup-cml@v1
+      - uses: iterative/setup-dvc@v1
       - name: Train model
+        
+        run: |
+          pip install -r requirements.txt  # Install dependencies
+          #dvc pull data --run-cache        # Pull data & run-cache from S3
+          dvc repro                        # Reproduce pipeline
+      - name: Create CML report
         env:
           REPO_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          pip install -r requirements.txt
-          dvc repro
-          
-          #report metrics
           echo "## Metrics" >> report.md
           git fetch --prune
           dvc metrics diff main --show-md >> report.md
-
-
-          # Publish confusion matrix diff
-          echo "## Plots" >> report.md
-          echo "### Class confusions" >> report.md
-          dvc plots diff main --show-md > confusion_matrix.png
+          
+          Publish confusion matrix diff
+          #echo "## Plots" >> report.md
+          #echo "### Class confusions" >> report.md
+          dvc plots diff main --show-md  >  -s 1.5 > confusion_matrix.png
           echo "![](./confusion_matrix.png)" >> report.md
 
-
-
-
+       
           cml comment create report.md
+         
+
+        
