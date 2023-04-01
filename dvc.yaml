@@ -16,3 +16,10 @@ stages:
     metrics:
     -  metrics.json:
           cache: false
+plots:
+ - Confusion-Matrix:
+      template: confusion
+      x: actual
+      y:
+        eval/live/plots/sklearn/cm/train.json: predicted
+        eval/live/plots/sklearn/cm/test.json: predicted
