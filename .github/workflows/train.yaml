@@ -32,8 +32,8 @@ jobs:
           echo "## Plots" >> report.md
           #echo "### Class confusions" >> report.md
        
-          dvc plots diff e1 main 
-          #echo "![](./confusion_matrix.png)" >> report.md 
+          dvc plots diff main 
+          echo "![](./confusion_matrix.png)" >> report.md 
 
        
           cml comment create report.md
