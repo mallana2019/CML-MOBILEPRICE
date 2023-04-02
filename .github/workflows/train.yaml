@@ -32,7 +32,7 @@ jobs:
           echo "## Plots" >> report.md
           #echo "### Class confusions" >> report.md
        
-          dvc plots diff main experiment
+          dvc plots diff 
           echo "![](./confusion_matrix.png)" >> report.md 
 
        
