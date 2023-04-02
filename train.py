@@ -41,8 +41,10 @@ clf.fit(X_train,y_train)
 
 #print accuracy to metrics.txt
 acc = clf.score(X_test, y_test)
-print(acc)
+
+
 macro_averaged_f1score = f1_score(y_test,clf.predict(X_test), average = 'macro')
+print(macro_averaged_f1score)
 with open("metrics.json", 'w') as outfile:
         json.dump({ "accuracy": acc , "f1_score_macro" : macro_averaged_f1score}, outfile)
 #plot a confusion matrix
