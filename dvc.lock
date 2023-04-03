@@ -20,12 +20,12 @@ stages:
       md5: f8f98c47d193aa7754964c5e95bd32fc
       size: 64902
     - path: train.py
-      md5: 056ec392c97a487fc6260442808d9955
-      size: 1632
+      md5: aaa5bfa62d77f750535a36fdaf262195
+      size: 1664
     outs:
     - path: confusion_matrix.png
-      md5: 5195c53658ab30de046964c1562bb96a
-      size: 22126
+      md5: e1c0c2f70a69a20e8d2e5cd0007366af
+      size: 21731
     - path: metrics.json
-      md5: e516df7a87c9fd4c29ffde2dcd5fe03f
-      size: 58
+      md5: ee5bac0331018b9388129647e71fddb7
+      size: 57
