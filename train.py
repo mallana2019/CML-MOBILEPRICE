@@ -14,6 +14,7 @@ from sklearn.linear_model import LogisticRegression
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.svm import SVC
 from xgboost import XGBClassifier
+from sklearn.naive_bayes import GaussianNB
 
 
 
@@ -34,7 +35,7 @@ X_train = scalar.transform(X_train)
 X_test =  scalar.transform(X_test)
 
 #Building Model 
-clf = LogisticRegression()
+clf = GaussianNB()
 clf.fit(X_train,y_train)
 
 
