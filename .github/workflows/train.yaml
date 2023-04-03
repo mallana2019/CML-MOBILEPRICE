@@ -32,8 +32,8 @@ jobs:
           echo "## Plots" >> report.md
           #echo "### Class confusions" >> report.md
        
-          dvc plots diff experiment main > confusion_matrix.png
-          echo "![](./confusion_matrix.png)" >> report.md 
+          dvc plots diff --show-vega main > vega.json vl2png vega.json -s 1.5 > confusion_matrix.png 
+          #echo "![](./confusion_matrix.png)" >> report.md 
 
        
           cml comment create report.md
